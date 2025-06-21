@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 
 const useMounted = () => {
     
-    const [mounted, useMounted] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        useState(true);
+        setMounted(true);
     }, []);
 
     return mounted;
