@@ -130,4 +130,6 @@ export const useCodeEditorStore = create<CodeEditorState & { editor: monaco.edit
         },
 
     }
-})
+});
+
+export const getExecutionResult = () => useCodeEditorStore.getState().executionResult;
