@@ -48,7 +48,7 @@ export const deleteSnippet = mutation({
         }
 
         const comments = await ctx.db
-            .query("snippetCommets")
+            .query("snippetComments")
             .withIndex("by_snippet_id")
             .filter((q) => q.eq(q.field("snippetId"), args.snippetId))
             .collect();
