@@ -1,9 +1,9 @@
-import { currentUser } from "@clerk/nextjs/server";
-import { ConvexHttpClient } from "convex/browser";
-import { api } from "../../../../convex/_generated/api";
+import {currentUser} from "@clerk/nextjs/server";
+import {ConvexHttpClient} from "convex/browser";
+import {api} from "../../../../convex/_generated/api";
 import Link from "next/link";
-import { Blocks, Code2, Sparkles } from "lucide-react";
-import { SignedIn } from "@clerk/nextjs";
+import {Blocks, Code2, Sparkles} from "lucide-react";
+import {SignedIn} from "@clerk/nextjs";
 import ThemeSelector from "./ThemeSelector";
 import LanguageSelector from "./LanguageSelector";
 import RunButton from "./RunButton";
@@ -17,27 +17,24 @@ async function Header() {
         userId: user?.id || "",
     });
 
-    console.log({ convexUser });
+    console.log({convexUser});
 
     return (
         <div className='relative z-10'>
             <div
-                className='flex items-center lg:justify-between justify-center 
-        bg-[#0a0a0f]/80 backdrop-blur-xl p-6 mb-4 rounded-lg'>
+                className='flex items-center justify-between
+                bg-[#0a0a0f]/80 backdrop-blur-xl p-3 mb-4 rounded-lg'>
                 <div className='hidden lg:flex items-center gap-8'>
                     <Link
                         href='/'
                         className='flex items-center gap-3 group relative'>
-
                         <div
                             className='absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg opacity-0 
                 group-hover:opacity-100 transition-all duration-500 blur-xl'
                         />
 
                         {/* Logo */}
-                        <div
-                            className='size-12 relative bg-indigo-900 p-2 rounded-full'>
-                        </div>
+                        <div className='size-12 relative bg-indigo-900 p-2 rounded-full'></div>
 
                         <div className='flex flex-col'>
                             <span className='block text-lg font-semibold bg-gradient-to-r from-blue-400 via-blue-300 to-purple-400 text-transparent bg-clip-text'>
@@ -69,19 +66,19 @@ async function Header() {
                     </nav>
                 </div>
 
-                <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-3">
+                <div className='flex items-center gap-4'>
+                    <div className='flex items-center gap-3'>
                         <ThemeSelector />
                         <LanguageSelector />
                     </div>
                 </div>
+                
 
-                <SignedIn>
+                <div className='flex items-center gap-5 ml-5'>
                     <RunButton />
-                </SignedIn>
-
-                <div className="pl-3 border-l border-gray-800">
-                    <HeaderProfileButton />
+                    <div className="pl-2 border-l border-gray-800">
+                        <HeaderProfileButton />
+                    </div>
                 </div>
             </div>
         </div>

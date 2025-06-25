@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useClerk } from '@clerk/nextjs';
 import {EditorPanelSkeleton, EditorViewSkeleton} from './EditorPanelSkeleton';
 import useMounted from '@/hooks/useMounted';
+import ShareSnippetDialog from './ShareSnippetDialog';
 
 function EditorPanel() {
     const clerk = useClerk();
@@ -55,7 +56,7 @@ function EditorPanel() {
                             <Image src={"/" + language + ".png"} alt="Logo" width={24} height={24} />
                         </div>
                         <div>
-                            <h2 className="text-sm font-medium text-white">Code Editor</h2>
+                            <h2 className="text-sm font-medium text-white">{language.charAt(0).toUpperCase() + language.slice(1).toLowerCase()}</h2>
                             <p className="text-xs text-gray-500">Write and execute your code</p>
                         </div>
                     </div>
@@ -140,6 +141,8 @@ function EditorPanel() {
                     {!clerk.loaded && <EditorPanelSkeleton />}
                 </div>
             </div>
+
+            {isShareDialogOpen && <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)}/>}
         </div>
     )
 }
